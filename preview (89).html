@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WiFi Hotspot Premium</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+padding:15px;
+color:white;
+}
+
+.container{
+max-width:420px;
+margin:auto;
+}
+
+.card{
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(20px);
+border-radius:25px;
+padding:20px;
+margin-top:15px;
+border:1px solid rgba(255,255,255,.2);
+}
+
+.logo{
+display:block;
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:white;
+padding:5px;
+}
+
+h1,h2{
+text-align:center;
+margin:10px;
+}
+
+input{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+margin:10px 0;
+outline:none;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+margin-top:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.login{
+background:white;
+color:#2563eb;
+}
+
+.buy{
+background:#16a34a;
+color:white;
+}
+
+.admin{
+background:#f59e0b;
+color:white;
+}
+
+.zodiak{
+background:#9333ea;
+color:white;
+}
+
+.paket{
+display:flex;
+justify-content:space-between;
+margin:10px 0;
+padding:12px;
+background:rgba(255,255,255,.1);
+border-radius:10px;
+}
+
+.small{
+font-size:13px;
+opacity:.8;
+line-height:22px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<img src="logo.png" class="logo">
+
+<h1>WiFi Hotspot</h1>
+
+<form name="login"
+action="$(link-login-only)"
+method="post">
+
+<input type="hidden"
+name="dst"
+value="$(link-orig)">
+
+<input type="hidden"
+name="popup"
+value="true">
+
+<input type="text"
+name="username"
+placeholder="Masukkan kode voucher">
+
+<input type="hidden"
+name="password">
+
+<button class="login">
+Login Voucher
+</button>
+
+</form>
+
+</div>
+
+
+<div class="card">
+
+<h2>Paket Voucher</h2>
+
+<div class="paket">
+<span>1 Jam</span>
+<b>Rp2.000</b>
+</div>
+
+<div class="paket">
+<span>3 Jam</span>
+<b>Rp5.000</b>
+</div>
+
+<div class="paket">
+<span>Harian</span>
+<b>Rp10.000</b>
+</div>
+
+<div class="paket">
+<span>Mingguan</span>
+<b>Rp25.000</b>
+</div>
+
+<div class="paket">
+<span>Gamer</span>
+<b>Rp15.000</b>
+</div>
+
+<button class="buy"
+onclick="window.location.href='https://wa.me/6289513237203'">
+
+Beli Paket via DANA
+
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>Status Voucher</h2>
+
+<div class="small">
+
+Kode : Belum login<br>
+Status : Menunggu login<br>
+Masa aktif : ---
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Cara Pembelian</h2>
+
+<div class="small">
+
+1. Pilih paket voucher<br>
+2. Transfer melalui DANA<br>
+3. Konfirmasi ke admin<br>
+4. Admin mengirim kode voucher<br>
+5. Masukkan kode lalu login
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<button class="zodiak"
+onclick="window.location.href='zodiak.html'">
+
+Ramalan Zodiak
+
+</button>
+
+<button class="admin"
+onclick="window.location.href='admin.html'">
+
+Panel Admin
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+document.login.password.value=
+document.login.username.value;
+
+document.login.username.onkeyup=function(){
+
+document.login.password.value=
+document.login.username.value;
+
+}
+
+</script>
+
+</body>
+</html>
