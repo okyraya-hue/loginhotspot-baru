@@ -46,7 +46,7 @@ padding:5px;
 
 h1,h2{
 text-align:center;
-margin:10px;
+margin-bottom:15px;
 }
 
 input{
@@ -66,6 +66,7 @@ border-radius:12px;
 margin-top:10px;
 font-weight:bold;
 cursor:pointer;
+font-size:15px;
 }
 
 .login{
@@ -78,11 +79,6 @@ background:#16a34a;
 color:white;
 }
 
-.admin{
-background:#f59e0b;
-color:white;
-}
-
 .zodiak{
 background:#9333ea;
 color:white;
@@ -91,16 +87,25 @@ color:white;
 .paket{
 display:flex;
 justify-content:space-between;
-margin:10px 0;
+align-items:center;
 padding:12px;
+margin:10px 0;
 background:rgba(255,255,255,.1);
-border-radius:10px;
+border-radius:12px;
 }
 
 .small{
 font-size:13px;
-opacity:.8;
 line-height:22px;
+opacity:.9;
+}
+
+#hasilZodiak{
+margin-top:15px;
+padding:10px;
+border-radius:10px;
+background:rgba(255,255,255,.1);
+display:none;
 }
 
 </style>
@@ -114,7 +119,7 @@ line-height:22px;
 
 <img src="logo.png" class="logo">
 
-<h1>PULONet Hotspot</h1>
+<h1>WiFi Hotspot</h1>
 
 <form name="login"
 action="$(link-login-only)"
@@ -126,13 +131,16 @@ value="$(link-orig)">
 
 <input type="hidden"
 name="popup"
-value="true">
+value="$(popup)">
 
-<input type="text"
+<input
+type="text"
 name="username"
-placeholder="Masukkan kode voucher">
+placeholder="Masukkan kode voucher"
+required>
 
-<input type="hidden"
+<input
+type="hidden"
 name="password">
 
 <button class="login">
@@ -149,36 +157,44 @@ Login Voucher
 <h2>Paket Voucher</h2>
 
 <div class="paket">
-<span>1 Hari</span>
-<b>Rp3.000</b>
+<span>1 Jam</span>
+<button class="buy"
+onclick="beli('1 Hari - Rp3.000')">
+Beli
+</button>
 </div>
 
 <div class="paket">
 <span>2 Hari</span>
-<b>Rp5.000</b>
-</div>
-
-<div class="paket">
-<span>Bulanan</span>
-<b>Rp55.000</b>
+<button class="buy"
+onclick="beli('3 Jam - Rp5.000')">
+Beli
+</button>
 </div>
 
 <div class="paket">
 <span>Mingguan</span>
-<b>Rp15.000</b>
+<button class="buy"
+onclick="beli('Mingguan - Rp15.000')">
+Beli
+</button>
 </div>
 
 <div class="paket">
-<span>Paket Home</span>
-<b>Rp115.000</b>
+<span>Bulanan</span>
+<button class="buy"
+onclick="beli('Mingguan - Rp55.000')">
+Beli
+</button>
 </div>
 
+<div class="paket">
+<span>Happy Home</span>
 <button class="buy"
-onclick="window.location.href='https://wa.me/6289513237203'">
-
-Beli Paket via DANA
-
+onclick="beli('Gamer - Rp115.000')">
+Beli
 </button>
+</div>
 
 </div>
 
@@ -188,11 +204,9 @@ Beli Paket via DANA
 <h2>Status Voucher</h2>
 
 <div class="small">
-
-Kode : Belum login<br>
-Status : Menunggu login<br>
-Masa aktif : ---
-
+Kode: Belum login<br>
+Status: Menunggu login<br>
+Masa Aktif: ---
 </div>
 
 </div>
@@ -205,9 +219,9 @@ Masa aktif : ---
 <div class="small">
 
 1. Pilih paket voucher<br>
-2. Transfer melalui DANA<br>
-3. Konfirmasi ke admin<br>
-4. Admin mengirim kode voucher<br>
+2. Klik beli paket<br>
+3. Hubungi admin<br>
+4. Admin memberikan kode voucher<br>
 5. Masukkan kode lalu login
 
 </div>
@@ -217,19 +231,39 @@ Masa aktif : ---
 
 <div class="card">
 
-<button class="zodiak"
-onclick="window.location.href='zodiak.html'">
+<h2>Ramalan Zodiak</h2>
 
-Ramalan Zodiak
+<select id="zodiak"
+style="width:100%;
+padding:14px;
+border:none;
+border-radius:12px;">
+
+<option>Pilih Zodiak</option>
+<option>Aries</option>
+<option>Taurus</option>
+<option>Gemini</option>
+<option>Cancer</option>
+<option>Leo</option>
+<option>Virgo</option>
+<option>Libra</option>
+<option>Scorpio</option>
+<option>Sagitarius</option>
+<option>Capricorn</option>
+<option>Aquarius</option>
+<option>Pisces</option>
+
+</select>
+
+<button
+class="zodiak"
+onclick="ramal()">
+
+Lihat Ramalan
 
 </button>
 
-<button class="admin"
-onclick="window.location.href='admin.html'">
-
-Panel Admin
-
-</button>
+<div id="hasilZodiak"></div>
 
 </div>
 
@@ -244,6 +278,36 @@ document.login.username.onkeyup=function(){
 
 document.login.password.value=
 document.login.username.value;
+
+}
+
+function beli(paket){
+
+alert(
+"Anda memilih paket:\n"+
+paket+
+"\n\nHubungi admin untuk pembelian voucher."
+);
+
+}
+
+function ramal(){
+
+let z=
+document.getElementById(
+"zodiak"
+).value;
+
+let hasil=
+document.getElementById(
+"hasilZodiak"
+);
+
+hasil.style.display="block";
+
+hasil.innerHTML=
+"Zodiak "+z+
+"<br><br>Hari ini peluang baik datang jika tetap fokus dan sabar.";
 
 }
 
