@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WiFi Hotspot Premium</title>
+<title>ＰＵＬＯｎｅｔ ＨＯＴｓｐｏｔPremium</title>
 
 <style>
 
@@ -15,63 +15,73 @@ font-family:Segoe UI,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+background:linear-gradient(135deg,#0f172a,#2563eb);
 padding:15px;
 color:white;
 }
 
-.container{
-max-width:420px;
+.box{
+max-width:380px;
 margin:auto;
 }
 
 .card{
 background:rgba(255,255,255,.1);
-backdrop-filter:blur(20px);
-border-radius:25px;
-padding:20px;
+backdrop-filter:blur(15px);
+padding:18px;
 margin-top:15px;
-border:1px solid rgba(255,255,255,.2);
+border-radius:20px;
+border:1px solid rgba(255,255,255,.1);
 }
 
 .logo{
+width:75px;
+height:75px;
 display:block;
-width:90px;
-height:90px;
 margin:auto;
 border-radius:50%;
 background:white;
 padding:5px;
+object-fit:cover;
 }
 
-h1,h2{
+h2{
 text-align:center;
-margin-bottom:15px;
+margin:10px;
 }
 
-input{
+input,select{
 width:100%;
-padding:14px;
+padding:12px;
 border:none;
-border-radius:12px;
-margin:10px 0;
+border-radius:10px;
+margin-top:10px;
 outline:none;
 }
 
 button{
-width:100%;
-padding:14px;
 border:none;
-border-radius:12px;
-margin-top:10px;
-font-weight:bold;
+padding:12px;
+border-radius:10px;
 cursor:pointer;
-font-size:15px;
+font-weight:bold;
 }
 
 .login{
+width:100%;
+margin-top:10px;
 background:white;
 color:#2563eb;
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px;
+background:rgba(255,255,255,.1);
+margin-top:8px;
+border-radius:10px;
 }
 
 .buy{
@@ -79,33 +89,72 @@ background:#16a34a;
 color:white;
 }
 
+.dana{
+width:100%;
+background:#0284c7;
+color:white;
+margin-top:10px;
+}
+
 .zodiak{
+width:100%;
 background:#9333ea;
 color:white;
+margin-top:10px;
 }
 
-.paket{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px;
-margin:10px 0;
-background:rgba(255,255,255,.1);
-border-radius:12px;
-}
-
-.small{
-font-size:13px;
-line-height:22px;
-opacity:.9;
-}
-
-#hasilZodiak{
-margin-top:15px;
+#hasil{
+margin-top:10px;
 padding:10px;
-border-radius:10px;
-background:rgba(255,255,255,.1);
 display:none;
+background:rgba(255,255,255,.1);
+border-radius:10px;
+}
+
+footer{
+margin-top:20px;
+margin-bottom:10px;
+}
+
+.footer-box{
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+padding:15px;
+border-radius:20px;
+text-align:center;
+}
+
+.footer-title{
+font-size:16px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.footer-text{
+font-size:13px;
+opacity:.8;
+margin-bottom:12px;
+}
+
+.footer-menu{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:10px;
+}
+
+.footer-menu span{
+padding:6px 10px;
+border-radius:8px;
+background:rgba(255,255,255,.1);
+cursor:pointer;
+font-size:12px;
+}
+
+.copyright{
+font-size:12px;
+opacity:.7;
 }
 
 </style>
@@ -113,13 +162,13 @@ display:none;
 
 <body>
 
-<div class="container">
+<div class="box">
 
 <div class="card">
 
 <img src="logo.png" class="logo">
 
-<h1>WiFi Hotspot</h1>
+<h2>ＰＵＬＯｎｅｔ ＨＯＴｓｐｏｔ</h2>
 
 <form name="login"
 action="$(link-login-only)"
@@ -131,12 +180,12 @@ value="$(link-orig)">
 
 <input type="hidden"
 name="popup"
-value="$(popup)">
+value="true">
 
 <input
 type="text"
 name="username"
-placeholder="Masukkan kode voucher"
+placeholder="Masukkan Kode Voucher"
 required>
 
 <input
@@ -156,75 +205,44 @@ Login Voucher
 
 <h2>Paket Voucher</h2>
 
-<div class="paket">
-<span>1 Jam</span>
+<div class="item">
+<span>1 Hari - Rp3.000</span>
 <button class="buy"
-onclick="beli('1 Hari - Rp3.000')">
+onclick="beli('1 Hari Rp3.000')">
 Beli
 </button>
 </div>
 
-<div class="paket">
-<span>2 Hari</span>
+<div class="item">
+<span>2 Hari - Rp5.000</span>
 <button class="buy"
-onclick="beli('3 Jam - Rp5.000')">
+onclick="beli('3 Jam Rp5.000')">
 Beli
 </button>
 </div>
 
-<div class="paket">
-<span>Mingguan</span>
+<div class="item">
+<span>Mingguan - Rp15.000</span>
 <button class="buy"
-onclick="beli('Mingguan - Rp15.000')">
+onclick="beli('Mingguan Rp15.000')">
 Beli
 </button>
 </div>
 
-<div class="paket">
-<span>Bulanan</span>
+<div class="item">
+<span>Bulanan - Rp55.000</span>
 <button class="buy"
-onclick="beli('Mingguan - Rp55.000')">
+onclick="beli('Bulanan Rp55.000')">
 Beli
 </button>
 </div>
 
-<div class="paket">
-<span>Happy Home</span>
-<button class="buy"
-onclick="beli('Gamer - Rp115.000')">
-Beli
+<button class="dana"
+onclick="alert('Pembayaran DANA :0895-1323-7203')">
+
+Pembayaran DANA
+
 </button>
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>Status Voucher</h2>
-
-<div class="small">
-Kode: Belum login<br>
-Status: Menunggu login<br>
-Masa Aktif: ---
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>Cara Pembelian</h2>
-
-<div class="small">
-
-1. Pilih paket voucher<br>
-2. Klik beli paket<br>
-3. Hubungi admin<br>
-4. Admin memberikan kode voucher<br>
-5. Masukkan kode lalu login
-
-</div>
 
 </div>
 
@@ -233,11 +251,7 @@ Masa Aktif: ---
 
 <h2>Ramalan Zodiak</h2>
 
-<select id="zodiak"
-style="width:100%;
-padding:14px;
-border:none;
-border-radius:12px;">
+<select id="z">
 
 <option>Pilih Zodiak</option>
 <option>Aries</option>
@@ -263,9 +277,45 @@ Lihat Ramalan
 
 </button>
 
-<div id="hasilZodiak"></div>
+<div id="hasil"></div>
 
 </div>
+
+<footer>
+
+<div class="footer-box">
+
+<div class="footer-title">
+ＰＵＬＯｎｅｔ ＨＯＴｓｐｏｔ
+</div>
+
+<div class="footer-text">
+Internet Cepat • Stabil • Aman
+</div>
+
+<div class="footer-menu">
+
+<span onclick="alert('Hubungi Admin')">
+Admin
+</span>
+
+<span onclick="alert('Layanan 08:00-22:00')">
+Jam
+</span>
+
+<span onclick="alert('Terima kasih menggunakan hotspot')">
+Info
+</span>
+
+</div>
+
+<div class="copyright">
+© 2026 Markie Webbinger & ＰＵＬＯｎｅｔ ＨＯＴｓｐｏｔ
+</div>
+
+</div>
+
+</footer>
 
 </div>
 
@@ -284,9 +334,9 @@ document.login.username.value;
 function beli(paket){
 
 alert(
-"Anda memilih paket:\n"+
+"Anda memilih:\n"+
 paket+
-"\n\nHubungi admin untuk pembelian voucher."
+"\n\nHubungi admin untuk pembelian voucher"
 );
 
 }
@@ -294,20 +344,16 @@ paket+
 function ramal(){
 
 let z=
-document.getElementById(
-"zodiak"
-).value;
+document.getElementById("z").value;
 
-let hasil=
-document.getElementById(
-"hasilZodiak"
-);
+let h=
+document.getElementById("hasil");
 
-hasil.style.display="block";
+h.style.display="block";
 
-hasil.innerHTML=
+h.innerHTML=
 "Zodiak "+z+
-"<br><br>Hari ini peluang baik datang jika tetap fokus dan sabar.";
+"<br><br>Hari ini peluang baik datang jika tetap fokus dan konsisten.";
 
 }
 
